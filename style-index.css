@@ -1,0 +1,21 @@
+header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+table{
+    width: 100%;
+    justify-content: space-between;
+}
+
+td {
+    border:1px solid black;
+    height: 20px;
+  }
+
+.add-and-date {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
