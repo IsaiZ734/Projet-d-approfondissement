@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+input#email-input:invalid{
+    background-color: #ffdddd;
+}
+.top{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 4em;
+    font-family:  'Times New Roman', serif;
+}
+.bigBlock{
+    font-family: Verdana, sans-serif;
+    margin: 12px;
+}
+.bigBlock div{
+    border: 3px solid black;
+    margin: 0;
+    padding-left: 10px;
+    border-top: 2px solid black;
+}
+.bigBlock div:first-child{
+    overflow: auto;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: 3px solid black;
+    border-bottom: 1px solid black;
+}
+.bigBlock div > div{
+    border: none;
+    margin-bottom: 15px;
+}
+.bigBlock div img{
+    float: left;
+    width: 150px;
+    height: 175px;
+}
+.bigBlock div div label{
+    display: inline-block;
+    width: 150px;
+    font-family: Verdana, sans-serif;
+}
+.bigBlock div button{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+.bigBlock div [value="Champs de recherche"]{
+    margin-left: -150px;
+    border: 3px solid black;
+    font-size: 2em;
+}
