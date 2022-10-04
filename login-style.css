@@ -16,7 +16,9 @@ input#email-input:invalid{
 }
 .bigBlock{
     font-family: Verdana, sans-serif;
-    margin: 12px;
+    margin-top: 12px;
+    margin-left: 300px;
+    margin-right: 300px;
 }
 .bigBlock div{
     border: 3px solid black;
