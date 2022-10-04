@@ -8,8 +8,12 @@ table{
     width: 100%;
     justify-content: space-between;
 }
-
+th{
+    background-color: rgb(196, 199, 196);
+    border-radius: 5px;
+}
 td {
+    background-color: rgb(196, 199, 196);
     border:1px solid black;
     height: 20px;
   }
@@ -18,4 +22,10 @@ td {
     display:flex;
     justify-content: space-between;
     align-items: center;
+}
+.logo-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
 }
