@@ -21,9 +21,9 @@ Feature: Index Flow
     Scenario: Redirecting Login
         When I click on "Login"
         Then I would be redirected to the login page, from where I could connect to my account.
-        (The login Features can be found in the LoginFlow.feature)
+        (The login Features can be found in the loginFlow.feature)
 
     Scenario: Redirecting to add an incident
         When I click on "Lien pour ajouter un incident"
         Then I would be redirected to the "Lien pour ajouter un incident" page, so I could report the new incident, to alarm other people.
-        (The login Features can be found in the LoginFlow.feature)
+        (The incident Features can be found in the incidentFlow.feature)
