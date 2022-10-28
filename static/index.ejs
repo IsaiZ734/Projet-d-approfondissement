@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Projet preparatoire</title>
     <link rel="stylesheet" href="css/index-style.css">
-    
 </head>
 <body>
     <header>
@@ -14,89 +13,18 @@
 
       </section>
       <section>
-            <input type="text" placeholder="Search..">
-            <a href="" >Login</a>
+        <input id="searchbar" onkeyup="searchOnKeyUp()" type="text" name="search" placeholder="Search..">
+            <a href="/login" >Login</a>
       </section>
     </header>
     <section class="add-and-date">
-        <a href="">Lien pour ajouter un incident</a>
+        <a href="/incident">Lien pour ajouter un incident</a>
         <p>
             <label>Jour actuel:</label>
-            <input type="date" value="2022-09-30">
+            <input type="date" id="myDatePicker" onchange="datePickerClicked()">
         </p>
     </section>
-
-    <div>
-        <table>
-            <tr>
-              <th>Description</th>
-              <th>Adresse</th>
-              <th>Rapporté par</th>
-              <th>Date</th>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-          </table>
-    </div>
-    
+    <div id="incidents-table"></div>
 </body>
+<head><script type="text/javascript" src="/scripts/index.js"></script></head>
 </html>
