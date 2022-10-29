@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Projet preparatoire</title>
     <link rel="stylesheet" href="css/index-style.css">
+
 </head>
 <body>
     <header>
@@ -13,18 +14,32 @@
 
       </section>
       <section>
-        <input id="searchbar" onkeyup="searchOnKeyUp()" type="text" name="search" placeholder="Search..">
+        <input id="searchbar" type="text" name="search" placeholder="Search..">
             <a href="/login" >Login</a>
       </section>
     </header>
     <section class="add-and-date">
         <a href="/incident">Lien pour ajouter un incident</a>
         <p>
-            <label>Jour actuel:</label>
-            <input type="date" id="myDatePicker" onchange="datePickerClicked()">
+            <label>Jour actuel: <%= date %></label>
         </p>
     </section>
-    <div id="incidents-table"></div>
+    <div id="incidents-table"><table>
+      <tr>
+        <th>Description</th>
+        <th>Adresse</th>
+        <th>Rapporté par</th>
+        <th>Date</th>
+        </tr>
+          <% for(var i=0; i < data.length; i++) { %>
+            <tr>
+              <td><%= data[i].description %></td>
+              <td><%= data[i].address %></td>
+              <td><%= data[i].user %></td>
+              <td><%= data[i].date %></td>
+            </tr>
+          <% } %>
+      </table></div>
 </body>
-<head><script type="text/javascript" src="/scripts/index.js"></script></head>
+
 </html>
