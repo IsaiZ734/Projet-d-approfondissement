@@ -1,3 +1,5 @@
+const sequelize = require(".../Database/database");
+
 function randomUserTable() {
 
   //static data for testing purposes

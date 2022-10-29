@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize")
-const sequelize = require("./database")
+const sequelize = require("./database");
+const Users = require("./Users");
 class Incident extends Model{}
 
 Incident.init({
@@ -18,11 +19,14 @@ Incident.init({
         allowNull : false
     },
 
-    user : {
+    user: {
         type: DataTypes.TEXT,
         allowNull: false,
-        foreignKey:true,
-
+        primaryKey: true,
+        references: {
+            model:Users,
+            key:"user"
+        }
     }
 },{sequelize});
 
