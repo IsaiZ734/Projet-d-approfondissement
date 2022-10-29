@@ -17,7 +17,10 @@ const Incident =require('./Database/Incident')
 
 sequelize.sync().then(()=> console.log("db is ready"));
 
+/*
 
+//ajouter un incident manuellement via la requette /add , il faut passer un objet
+//Incident
 app.post("/add",(req,res)=>{
     try{
         Incident.create(req.body).then(()=>res.send(console.log("incident added")));
@@ -25,10 +28,11 @@ app.post("/add",(req,res)=>{
         res.send(console.log("incident not added"))
     }
 });
-app.get('/', function(req,res,next){
-    let indexJS = require('./static/scripts/index');
-    
-    res.render('index.ejs',{date: "22-12-2022",data:indexJS.table});
+*/
+
+app.get('/', async function(req,res,next){
+    const [result,meta] = await sequelize.query("SELECT * from Incidents");
+    res.render('index.ejs',{date: "22-12-2022",data:result});
 });
 
 app.get('/login', function(req,res,next){
