@@ -22,7 +22,6 @@ Incident.init({
     user: {
         type: DataTypes.TEXT,
         allowNull: false,
-        primaryKey: true,
         references: {
             model:Users,
             key:"user"

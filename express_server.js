@@ -17,7 +17,7 @@ const Incident =require('./Database/Incident')
 
 sequelize.sync().then(()=> console.log("db is ready"));
 
-/*
+
 
 //ajouter un incident manuellement via la requette /add , il faut passer un objet
 //Incident
@@ -28,7 +28,7 @@ app.post("/add",(req,res)=>{
         res.send(console.log("incident not added"))
     }
 });
-*/
+
 
 app.get('/', async function(req,res,next){
     const [result,meta] = await sequelize.query("SELECT * from Incidents");
