@@ -28,14 +28,6 @@ const Incident =require('./Database/Incident')
 
 sequelize.sync().then(()=> console.log("db is ready"));
 
-
-app.get('/signIn', function(req,res,next){
-    res.render('index.ejs', {nick: req.query.nickName1}); //faire un label pour mettre le nickname dedans
-});
-
-app.get('/', function(req,res,next){
-    let indexJS = require('./static/scripts/index');
-
 //ajouter un incident manuellement via la requette /add , il faut passer un objet
 //Incident
 app.post("/add",(req,res)=>{
@@ -46,6 +38,14 @@ app.post("/add",(req,res)=>{
     }
 });
 
+app.post('/ident', function(req, res, next){
+    if (req.body.username1 == "mismo" && req.body.password1 == "mismo"){
+        req.session.username1 = "mismo";
+        res.redirect('/');
+    } else {
+        res.redirect('/login?incorrect=true');
+    }
+});
 
 app.get('/', async function(req,res,next){
     const [result,meta] = await sequelize.query("SELECT * from Incidents");
@@ -53,7 +53,11 @@ app.get('/', async function(req,res,next){
 });
 
 app.get('/login', function(req,res,next){
-    res.render('login.ejs');
+    if (req.query.incorrect){
+        res.render('login.ejs', {incorrect: "The username or the password you entered was incorrect."});
+    } else {
+        res.render('login.ejs', {incorrect: ""});
+    }
 });
 
 app.get('/incident', function(req,res,next){
@@ -61,4 +65,8 @@ app.get('/incident', function(req,res,next){
 });
 
 app.use(express.static('static'));
-app.listen(8080);
+https.createServer({
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem'),
+    passphrase: 'ingi'
+  }, app).listen(8080);

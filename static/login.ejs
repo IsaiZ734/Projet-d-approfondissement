@@ -20,10 +20,11 @@
             </div>
             <div>
                 <h3>Compte existant</h3>
-                <form name="loginForm" action="/" method="get" onsubmit="return validateLogin(event)">
+                <form action="/ident" method="post">
                     <div>
-                        <label for="nickName1">Nom d'utilisateur</label>
-                        <input name="nickName1" type="text" required>
+                        <label for="username1">Nom d'utilisateur</label>
+                        <input name="username1" type="text" required>
+                        <p class="incorrect-passsword"><%= incorrect %></p>
                     </div>
                     <div>
                         <label for="password1">Mot de passe</label>
@@ -34,8 +35,8 @@
                 <h3>Nouveau compte</h3>
                 <form name="registerForm" action="/signUp" method="get" onsubmit="return validateRegister(event)">
                     <div>
-                        <label for="nickName2">Nom d'utilisateur</label>
-                        <input name="nickName2" type="text" required>
+                        <label for="username2">Nom d'utilisateur</label>
+                        <input name="username2" type="text" required>
                     </div>
                     <div>
                         <label for="password2">Mot de passe</label>

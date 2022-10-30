@@ -14,6 +14,14 @@ input#email-input:invalid{
     font-size: 3.5em;
     font-family:  'Times New Roman', serif;
 }
+.incorrect-passsword{
+    padding-left: 2%;
+    position: absolute;
+    display: inline-block;
+    color: red;
+    font-size: 1.2em;
+    font-family: monospace;
+}
 .bigBlock{
     font-family: Verdana, sans-serif;
     margin-top: 12px;
