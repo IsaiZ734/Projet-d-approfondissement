@@ -5,13 +5,14 @@
         <meta charset="utf-8">
         <title>Louvain-l'incident</title>
         <link rel="stylesheet" type="text/css" href="css/login-style.css">
+        <script src="login.js"></script>
     </head>
     <body>
         <section>
             <div class="top">Page d’Identification</div>
         </section>
         <section class="bigBlock">
-            <div>
+            <div id="headingDiv">
                 <p>
                     <img src="Pics/Logo-federation-wallonie-bruxelles.jpg" alt="Logo Fédération Wallonie Bruxelles" width="150" height="175">
                     <input type="text" value="Champs de recherche">
@@ -19,33 +20,37 @@
             </div>
             <div>
                 <h3>Compte existant</h3>
-                <div>
-                    <label for="nickName1">Nom d'utilisateur</label>
-                    <input id="nickName1" type="text">
-                </div>
-                <div>
-                    <label for="password1">Mot de passe</label>
-                    <input id="password1" type="password">
-                </div>
-                <button name="button">S'identifier</button>
+                <form name="loginForm" action="/" method="get" onsubmit="return validateLogin(event)">
+                    <div>
+                        <label for="nickName1">Nom d'utilisateur</label>
+                        <input name="nickName1" type="text" required>
+                    </div>
+                    <div>
+                        <label for="password1">Mot de passe</label>
+                        <input name="password1" type="password" required>
+                    </div>
+                    <button type="submit" name="button">S'identifier</button>
+                </form>
                 <h3>Nouveau compte</h3>
-                <div>
-                    <label for="nickName2">Nom d'utilisateur</label>
-                    <input id="nickName2" type="text">
-                </div>
-                <div>
-                    <label for="password2">Mot de passe</label>
-                    <input id="password2" type="password">
-                </div>
-                <div>
-                    <label for="name">Nom complet</label>
-                    <input id="name" type="text">
-                </div>
-                <div>
-                    <label for="email-input">Adresse e-mail</label>
-                    <input id="email-input" type="email">
-                </div>
-                <button name="button">S'enregistrer</button>
+                <form name="registerForm" action="/signUp" method="get" onsubmit="return validateRegister(event)">
+                    <div>
+                        <label for="nickName2">Nom d'utilisateur</label>
+                        <input name="nickName2" type="text" required>
+                    </div>
+                    <div>
+                        <label for="password2">Mot de passe</label>
+                        <input name="password2" type="password" required>
+                    </div>
+                    <div>
+                        <label for="name">Nom complet</label>
+                        <input name="name" type="text" required>
+                    </div>
+                    <div>
+                        <label for="email-input">Adresse e-mail</label>
+                        <input id="email-input" type="email">
+                    </div>
+                    <button type="submit" name="button">S'enregistrer</button>
+                </form>
             </div>
         </section>
     </body>

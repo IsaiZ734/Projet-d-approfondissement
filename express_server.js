@@ -1,23 +1,40 @@
 var express = require('express');
+var session = require('express-session');
+var bodyParser = require("body-parser");
+var https = require('https');
+var fs = require('fs');
 var app = express ()
 
 
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 app.set('views', 'static');
-app.use(express.static('static'));
-app.use(express.json());
-// app.use(function(req,res,next) {
-//     console.log ( req.url );
-//     next();
-//   });
-const sequelize = require("./Database/database")
 
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(express.json());
+
+app.use(session({
+  secret: "propre123",
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    path: '/', 
+    httpOnly: true
+  }
+}));
+
+const sequelize = require("./Database/database")
 const User =require('./Database/Users')
 const Incident =require('./Database/Incident')
 
 sequelize.sync().then(()=> console.log("db is ready"));
 
 
+app.get('/signIn', function(req,res,next){
+    res.render('index.ejs', {nick: req.query.nickName1}); //faire un label pour mettre le nickname dedans
+});
+
+app.get('/', function(req,res,next){
+    let indexJS = require('./static/scripts/index');
 
 //ajouter un incident manuellement via la requette /add , il faut passer un objet
 //Incident
@@ -43,4 +60,5 @@ app.get('/incident', function(req,res,next){
     res.render('incident.ejs');
 });
 
+app.use(express.static('static'));
 app.listen(8080);

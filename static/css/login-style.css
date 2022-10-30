@@ -11,7 +11,7 @@ input#email-input:invalid{
     text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
-    font-size: 4em;
+    font-size: 3.5em;
     font-family:  'Times New Roman', serif;
 }
 .bigBlock{
@@ -26,15 +26,16 @@ input#email-input:invalid{
     padding-left: 10px;
     border-top: 2px solid black;
 }
-.bigBlock div:first-child{
+.bigBlock [id="headingDiv"]{
     overflow: auto;
     text-align: center;
     margin: 0;
     padding: 0;
+    padding-left: 0;
     border: 3px solid black;
     border-bottom: 1px solid black;
 }
-.bigBlock div > div{
+.bigBlock form div{
     border: none;
     margin-bottom: 15px;
 }
@@ -43,12 +44,12 @@ input#email-input:invalid{
     width: 150px;
     height: 175px;
 }
-.bigBlock div div label{
+.bigBlock div form div label{
     display: inline-block;
     width: 150px;
     font-family: Verdana, sans-serif;
 }
-.bigBlock div button{
+.bigBlock div form button{
     margin-left: 10px;
     margin-bottom: 10px;
     font-size: 1em;
