@@ -3,7 +3,7 @@ var session = require('express-session');
 var bodyParser = require("body-parser");
 var https = require('https');
 var fs = require('fs');
-var app = express ()
+var app = express ();
 
 
 app.set('view engine', 'ejs');
