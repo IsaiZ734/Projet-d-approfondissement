@@ -61,8 +61,26 @@ app.get('/login', function(req,res,next){
 });
 
 app.get('/incident', function(req,res,next){
-    res.render('incident.ejs');
+    let date= new Date();
+    let date1=date.toDateString();
+    if (req.session.username1&&req.session.password1){
+        res.render('incident.ejs',{rememeber:date1});
+        res.render('incident.ejs');
+        }
+    else {res.redirect('/login');
+    res.alert('Please login before submitting an incident');}
 });
+
+app.get('/subm.html', function (req,res,next){
+    if (req.session.username1&&req.session.password1) {
+        res.render('add.ejs')
+        res.redirect('/')
+       
+    }
+    else {
+        res.redirect('/login');
+        res.alert('Your session has expired please login to continue')}
+})
 
 app.use(express.static('static'));
 https.createServer({
