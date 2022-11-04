@@ -1,4 +1,30 @@
-const sequelize = require(".../Database/database");
+const sequelize = require("../../express_server").sequelize;
+const User =require("../../express_server").User;
+const Incident =require("../../express_server").Incident;
+var app = require("../../express_server").app;
+
+async function getAllIncidents(){
+  try{
+    const [result,meta] = await sequelize.query("SELECT * from Incidents");
+    return result;
+  }catch{
+    return[];
+  }
+}
+function isLoggedIn(user){
+    return (user===undefined||user===null||new String(user).length==0)? "Login":user;
+}
+function todaysDate(){
+  return (new Date()).toLocaleDateString('de-DE');
+}
+
+
+async function update(username){
+  return{Login:isLoggedIn(username),date: todaysDate(),data: await getAllIncidents()}
+}
+
+
+
 
 function randomUserTable() {
 
@@ -31,6 +57,11 @@ function randomUserTable() {
     return incidents;
   }
 
+
 module.exports = { // le module exporte un objet
-  table: randomUserTable()
+  table: randomUserTable(),
+  allIncidents :getAllIncidents(),
+  isLoggedIn:isLoggedIn,
+  todaysDate:todaysDate,
+  update:update
  };

@@ -1,3 +1,4 @@
+
 const { Model, DataTypes } = require("sequelize")
 const sequelize = require("./database");
 const Users = require("./Users");
@@ -15,7 +16,7 @@ Incident.init({
     },
 
     date : {
-        type : DataTypes.DATE,
+        type : DataTypes.DATEONLY,
         allowNull : false
     },
 
@@ -26,7 +27,11 @@ Incident.init({
             model:Users,
             key:"user"
         }
-    }
+    },
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false,
+
 },{sequelize});
 
 module.exports=Incident

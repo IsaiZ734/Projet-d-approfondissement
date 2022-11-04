@@ -33,7 +33,7 @@
                     <button type="submit" name="button">S'identifier</button>
                 </form>
                 <h3>Nouveau compte</h3>
-                <form name="registerForm" action="/signUp" method="get" onsubmit="return validateRegister(event)">
+                <form name="registerForm" action="/signUp" method="post" onsubmit="return validateRegister(event)">
                     <div>
                         <label for="username2">Nom d'utilisateur</label>
                         <input name="username2" type="text" required>
@@ -48,7 +48,7 @@
                     </div>
                     <div>
                         <label for="email-input">Adresse e-mail</label>
-                        <input id="email-input" type="email">
+                        <input id="email-input" name="email" type="email" required>
                     </div>
                     <button type="submit" name="button">S'enregistrer</button>
                 </form>

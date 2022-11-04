@@ -30,13 +30,13 @@
 
     <hr>
     <h1>Signaler un nouveau incident</h1>
-  <form>
+  <form action="/add" method="post">
       <p><label>Description</label></p>
-      <textarea rows="4" cols="50"></textarea> <br>
+      <textarea name="description" type="text" rows="4" cols="50" required></textarea> <br>
       <p><label>Adresse</label></p>
-      <textarea rows="4" cols="50"></textarea> <br>
+      <textarea  name="address" type="text"rows="4" cols="50" required></textarea> <br>
       <p align="right"><label>Date: <%=rememeber%></label></p>
 
-      <input type="submit" value="Soumettre">
+      <button type="submit" name="button">Ajouter l'incident</button>
   </form>
 </div>
