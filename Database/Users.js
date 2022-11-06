@@ -16,7 +16,7 @@ Users.init({
         },
 
         email:{
-            type: DataTypes.email,
+            type: DataTypes.TEXT,
             allowNull:false
         },
     
