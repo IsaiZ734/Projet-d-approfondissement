@@ -9,6 +9,16 @@ Users.init({
             allowNull: false,
             primaryKey: true
         },
+
+        role:{
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+
+        email:{
+            type: DataTypes.email,
+            allowNull:false
+        },
     
         password : { 
             type: DataTypes.TEXT,
