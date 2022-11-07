@@ -1,9 +1,10 @@
 var express = require('express');
 var session = require('express-session');
 var bodyParser = require("body-parser");
+var crypto = require("crypto");
 var https = require('https');
 var fs = require('fs');
-var app = express ();
+var app = express();
 
 
 app.set('view engine', 'ejs');
@@ -23,8 +24,8 @@ app.use(session({
 }));
 
 const sequelize = require("./Database/database")
-const User =require('./Database/Users')
-const Incident =require('./Database/Incident')
+const User = require('./Database/Users')
+const Incident = require('./Database/Incident')
 
 sequelize.sync().then(()=> console.log("db is ready"));
 
@@ -39,6 +40,25 @@ module.exports={
 //imports
 const index =require("./static/scripts/index")
 const login =require("./static/scripts/login");
+
+async function emptyDB(){
+    sequelize.sync()
+    if (await (await login.getAllUsers()).length == 0){
+        console.log("empty Users table");
+        console.log(await login.addUsersTest());
+    } else {
+        console.log("Users table is not empty");
+    }
+    sequelize.sync()
+    if (await (await index.getAllIncidents()).length == 0){
+        console.log("empty Incident table");
+        console.log(await index.addIncidentsTest());
+    } else {
+        console.log("Incident table is not empty");
+    }
+}
+
+emptyDB();
 
 
 //ajouter un incident manuellement via la requette /add , il faut passer un objet
@@ -61,70 +81,59 @@ app.post("/add",async (req,res)=>{
     }
 });
 
-//index
 
+//index
 app.get('/', async function(req,res,next){
-    let table =await index.allIncidents;
     res.render('index.ejs',await index.update(req.session.username));
 });
 
 
-
-
 //login,signup
-
-
 app.post('/ident', async function(req, res, next){
     sequelize.sync();
 
-    let result = await login.login(req.body.username1,req.body.password1);
+    var hash = crypto.createHash("md5").update(req.body.password1).digest('hex');
+
+    let result = await login.login(req.body.username1,hash);
 
     if(result==req.body.username1){
         req.session.username=result;
         res.redirect('/');
     }else{
         res.redirect('/login?incorrect=true');
-    } 
-
-
-/*     if (req.body.username1 == "mismo" && req.body.password1 == "mismo"){
-        req.session.username1 = "mismo";
-        res.redirect('/');
-    } else {
-        res.redirect('/login?incorrect=true');
-    } */
+    }
 });
 
 app.get('/login', function(req,res,next){
     if (req.query.incorrect){
-        res.render('login.ejs', {incorrect: "The username or the password you entered was incorrect."});
+        res.render('login.ejs', {incorrect1: "The username or the password you entered was incorrect", incorrect2: ""});
     } else {
-        res.render('login.ejs', {incorrect: ""});
+        res.render('login.ejs', {incorrect1: "", incorrect2: ""});
     }
 });
 
 app.post('/signUp',async function(req,res,next){
-    const username =new String(req.body.username2).toLowerCase()
-    const email=new String(req.body.email).toLowerCase()
+    const username = new String(req.body.username2).toLowerCase()
+    const email = new String(req.body.email).toLowerCase()
 
     if (await login.usernameTaken(username)){
-        res.render('login.ejs', {incorrect: "The username is already taken try a new one"});
+        res.render('login.ejs', {incorrect1: "", incorrect2: "The username is already taken try a new one"});
     }else if(await login.emailTaken(email)){
-        res.render('login.ejs', {incorrect: "The email is already taken try a new one"});
+        res.render('login.ejs', {incorrect1: "", incorrect2: "The email is already taken try a new one"});
     }else{
         try{
             User.create({
                 user:username,
-                firstName:req.body.name.split(" ")[0],
-                lastName:req.body.name.split(" ")[1],
+                name:req.body.name,
                 email:email,
-                password:req.body.password2
+                password:crypto.createHash("md5").update(req.body.password2).digest('hex'),
+                role:"normal"
             }).then(console.log("User added"))
             
-            res.render('login.ejs',{incorrect:""});
+            res.render('login.ejs',{incorrect1:"", incorrect2:""});
     
         }catch{
-            res.render('login.ejs', {incorrect: "User did not created data missing"});
+            res.render('login.ejs', {incorrect1: "", incorrect2:"User was not created, data missing"});
         }
     }
 })

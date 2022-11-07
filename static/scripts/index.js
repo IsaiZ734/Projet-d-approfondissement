@@ -26,42 +26,60 @@ async function update(username){
 
 
 
-function randomUserTable() {
-
+async function addIncidentsTest() {
   //static data for testing purposes
-  const incidents = [];
+  const array = [];
 
-  incidents.push({
-    id: 1,
-    description: "Accident 1",
-    address: "XYZ 1",
-    user: "User1",
-    date: "2022-10-23",
+  array.push({
+    description: "Incident 1",
+    address: "LLN Gare",
+    user: "ajia",
+    date: "2022-10-23"
   });
 
-  incidents.push({
-    id: 2,
-    description: "Accident 2",
-    address: "XYZ 2",
-    user: "User2",
-    date: "2022-10-22",
+  array.push({
+    description: "Incident 2",
+    address: "Grande place",
+    user: "adham",
+    date: "2022-10-22"
   });
 
-  incidents.push({
-    id: 3,
-    description: "Accident 3",
-    address: "XYZ 3",
-    user: "User3",
-    date: "2022-10-21",
+  array.push({
+    description: "Incident 3",
+    address: "Place de l'université",
+    user: "eduart",
+    date: "2022-10-21"
   });
-    return incidents;
+
+  array.push({
+    description: "Incident 4",
+    address: "Place des Wallons",
+    user: "ajia",
+    date: "2021-08-14"
+  });
+
+  array.push({
+    description: "Incident 5",
+    address: "Lac",
+    user: "adham",
+    date: "2022-11-07"
+  });
+
+  for (let i = 0; i<array.length; i++){
+    console.log(array[i]);
+    Incident.create(array[i]);
   }
+
+  console.log(await getAllIncidents());
+  
+  return "example incidents added";
+}
 
 
 module.exports = { // le module exporte un objet
-  table: randomUserTable(),
-  allIncidents :getAllIncidents(),
+  getAllIncidents :getAllIncidents,
   isLoggedIn:isLoggedIn,
   todaysDate:todaysDate,
-  update:update
+  update:update,
+  addIncidentsTest:addIncidentsTest
  };
