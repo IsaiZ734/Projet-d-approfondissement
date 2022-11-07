@@ -40,27 +40,23 @@ module.exports={
 //imports
 const index =require("./static/scripts/index")
 const login =require("./static/scripts/login");
+const e = require('express');
 
 async function emptyDB(){
-    sequelize.sync()
-    if (await (await login.getAllUsers()).length == 0){
+    console.log(await login.getAllUsers())
+    if ((await login.getAllUsers()).length == 0){
         console.log("empty Users table");
-        console.log(await login.addUsersTest());
+        login.addUsersTest();
     } else {
         console.log("Users table is not empty");
     }
-    sequelize.sync()
-    if (await (await index.getAllIncidents()).length == 0){
+    if ((await index.getAllIncidents()).length == 0){
         console.log("empty Incident table");
-        console.log(await index.addIncidentsTest());
+        index.addIncidentsTest();
     } else {
         console.log("Incident table is not empty");
     }
 }
-
-emptyDB();
-
-
 //ajouter un incident manuellement via la requette /add , il faut passer un objet
 //Incident
 app.post("/add",async (req,res)=>{
@@ -84,6 +80,7 @@ app.post("/add",async (req,res)=>{
 
 //index
 app.get('/', async function(req,res,next){
+    emptyDB();
     res.render('index.ejs',await index.update(req.session.username));
 });
 

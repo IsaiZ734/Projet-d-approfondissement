@@ -50,7 +50,8 @@ async function emailTaken(email){
 
 async function getAllUsers(){
     try{
-        return await sequelize.query("Select * from Users");
+        const result =await sequelize.query("Select * from Users");
+        return result[0];
     } catch{
         return [];
     }
