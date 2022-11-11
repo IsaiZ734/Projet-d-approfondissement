@@ -1,29 +1,32 @@
-header{
-    display:flex;
+header {
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-table{
+table {
     width: 100%;
     justify-content: space-between;
 }
-th{
+
+th {
     background-color: rgb(196, 199, 196);
     border-radius: 5px;
 }
+
 td {
     background-color: rgb(196, 199, 196);
-    border:1px solid black;
+    border: 1px solid black;
     height: 20px;
-  }
+}
 
 .add-and-date {
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.logo-title{
+
+.logo-title {
     display: flex;
     align-items: center;
     justify-content: space-between;

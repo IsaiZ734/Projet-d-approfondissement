@@ -1,20 +1,23 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
-input#email-input:invalid{
+
+input#email-input:invalid {
     background-color: #ffdddd;
 }
-.top{
+
+.top {
     background-color: black;
     color: white;
     text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
     font-size: 3.5em;
-    font-family:  'Times New Roman', serif;
+    font-family: 'Times New Roman', serif;
 }
-.incorrect-passsword{
+
+.incorrect-passsword {
     padding-left: 2%;
     position: absolute;
     display: inline-block;
@@ -22,19 +25,22 @@ input#email-input:invalid{
     font-size: 1.2em;
     font-family: monospace;
 }
-.bigBlock{
+
+.bigBlock {
     font-family: Verdana, sans-serif;
     margin-top: 12px;
     margin-left: 300px;
     margin-right: 300px;
 }
-.bigBlock div{
+
+.bigBlock div {
     border: 3px solid black;
     margin: 0;
     padding-left: 10px;
     border-top: 2px solid black;
 }
-.bigBlock [id="headingDiv"]{
+
+.bigBlock [id="headingDiv"] {
     overflow: auto;
     text-align: center;
     margin: 0;
@@ -43,26 +49,31 @@ input#email-input:invalid{
     border: 3px solid black;
     border-bottom: 1px solid black;
 }
-.bigBlock form div{
+
+.bigBlock form div {
     border: none;
     margin-bottom: 15px;
 }
-.bigBlock div img{
+
+.bigBlock div img {
     float: left;
     width: 150px;
     height: 175px;
 }
-.bigBlock div form div label{
+
+.bigBlock div form div label {
     display: inline-block;
     width: 150px;
     font-family: Verdana, sans-serif;
 }
-.bigBlock div form button{
+
+.bigBlock div form button {
     margin-left: 10px;
     margin-bottom: 10px;
     font-size: 1em;
 }
-.bigBlock div [value="Champs de recherche"]{
+
+.bigBlock div [value="Champs de recherche"] {
     margin-left: -150px;
     border: 3px solid black;
     font-size: 2em;
