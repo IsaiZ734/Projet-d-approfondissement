@@ -27,7 +27,7 @@ const sequelize = require("./Database/database")
 const User = require('./Database/Users')
 const Incident = require('./Database/Incident')
 
-sequelize.sync().then(() => console.log("db is ready"));
+sequelize.sync().then(() => {emptyDB(),console.log("db is ready")});
 
 //exporting variables
 module.exports = {
@@ -41,9 +41,11 @@ module.exports = {
 const index = require("./static/scripts/index")
 const login = require("./static/scripts/login");
 const e = require('express');
+const { table } = require("console");
+const { render } = require("ejs");
 
 async function emptyDB() {
-    console.log(await login.getAllUsers())
+    //console.log(await login.getAllUsers())
     if ((await login.getAllUsers()).length == 0) {
         console.log("empty Users table");
         login.addUsersTest();
@@ -59,30 +61,22 @@ async function emptyDB() {
 }
 
 //ajouter un incident manuellement via la requette /add , il faut passer un objet
-//Incident
-app.post("/add", async (req, res) => {
-    try {
-        console.log(req.body, req.session.username)
-        const user = req.session.username
-        Incident.create({
-            user: user,
-            description: req.body.description,
-            address: req.body.address,
-            date: new Date().toISOString()
-        }).then(console.log("incident added"))
-
-        res.redirect("/");
-
-    } catch {
-        res.send(console.log("incident not added"))
-    }
-});
 
 
 //index
+    //render the first page
 app.get('/', async function (req, res, next) {
-    emptyDB();
-    res.render('index.ejs', await index.update(req.session.username));
+    try{
+        res.render('index.ejs', await index.update(req.session.username,req.session.message.search));
+    }catch{
+        res.render('index.ejs', await index.update(req.session.username));
+    }
+});
+
+    //when the search bar is used, uses the middleware to sent data when redirected
+app.post('/request/search', async function (req, res, next) {
+    req.session.message={search:req.body.search}
+    res.redirect("/");
 });
 
 
@@ -138,9 +132,12 @@ app.post('/signUp', async function (req, res, next) {
 
 
 app.get('/incident', function (req, res, next) {
-
     if (req.session.username) {
-        res.render('incident.ejs', {rememeber: "22-12-2022"});
+        try{
+            res.render('incident.ejs', {user:req.session.username,incorrect:req.session.message.alert,rememeber: "22-12-2022"});
+        }catch{
+            res.render('incident.ejs', {user:req.session.username,incorrect:"",rememeber: "22-12-2022"});
+        }
     } else {
         res.redirect('/login');
     }
@@ -157,6 +154,28 @@ app.get('/subm.html', function (req, res, next) {
     }
 })
 
+
+//Incident 
+app.post("/add",(req, res) => {
+    const user = req.session.username;
+    req.session.message={alert:""};
+    try {
+        //console.log(req.body, req.session.username)
+        const obj={
+            user: user,
+            description: req.body.description,
+            address: index.checkInput({type:"address",value:req.body.address}),
+            date: new Date().toISOString()
+        }
+        Incident.create(obj).then(req.session.message.alert="")
+        res.redirect("/");
+
+    } catch (e) {
+        req.session.message.alert=e;
+        req.session.username=user;
+        res.redirect('/incident');
+    }
+});
 
 app.use(express.static('static'));
 https.createServer({

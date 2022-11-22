@@ -21,9 +21,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">S'inscrire</a>
-      <a href="#">Se connecter</a>
-      <a href="#">Retour</a>
+      <a href="/">Home Page</a>
+      <a ><%= user%></a>
     </div>
   </div>
 </div>
@@ -33,9 +32,10 @@
     <form action="/add" method="post">
       <p><label>Description</label></p>
       <textarea name="description" type="text" rows="4" cols="50" required></textarea> <br>
-      <p><label>Adresse</label></p>
+      <p><label>Adresse (Ex: "88 Gare de Louvain-la-Neuve Ottignis, BE-07306")</label></p>
+      <p class="incorrect-password"><%= incorrect %></p>
       <textarea  name="address" type="text"rows="4" cols="50" required></textarea> <br>
-      <p align="right"><label>Date: <%=rememeber%></label></p>
+      <p align="right"><label >Date: <%=rememeber%></label></p>
       <button type="submit" name="button">Ajouter l'incident</button>
   </form>
 </div>
