@@ -9,8 +9,8 @@ body{
 .loginButton{
     border-radius: 4px;
     font-size: 20px;
-    border: 1px solid green;
-    background-color: #4fbf52;
+    border: 2px solid #00c3af;
+    background-color: #009c8c;
     color: #FFFFFF;
     text-align: center;
     text-decoration: none;
@@ -19,6 +19,7 @@ body{
 }
 
 .loginButton:hover{
+    border: 2px solid #009c8c;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
 }
@@ -26,7 +27,7 @@ body{
 .incidentButton {
     appearance: button;
     backface-visibility: hidden;
-    background-color: #405cf5;
+    background-color: #00c3af;
     border-radius: 6px;
     border-width: 0;
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
@@ -67,8 +68,10 @@ body{
     font-size: 70px;
     font-weight: 600;
     font-family: Constantia;
-    background-image: linear-gradient(to right, #553c9a 45%, #ee4b2b);
-    color: transparent;
+    color: #00c3af;
+    text-decoration: underline;
+    text-shadow: 0px 0px 5px #0f5a5373, 0px 0px 10px #0f5a5373, 0px 0px 10px #0f5a5373,
+    0px 0px 20px #0f5a5373;
     position: absolute;
     margin: 0;
     top: 15%;
@@ -80,10 +83,10 @@ body{
 }
 
 .searchBox{
-    border: 3px solid #00B4CC;
+    border: 3px solid #515e60;
     padding: 5px;
     height: 20px;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
     outline: none;
     color: #000000;
 }
@@ -100,12 +103,30 @@ table {
 }
 
 th {
-    background-color: rgb(196, 199, 196);
+    font-family: "Arial Black";
+    background-image: linear-gradient(to bottom, #00c3af, #009c8c);
+    padding: 8px 20px;
+    color: #FFFFFF;
+    font-size: 18px;
+    background-color: #009c8c;
     border-radius: 5px;
 }
 
+td:first-child{
+    text-align: left;
+    width: 40%;
+    word-wrap: break-word;
+}
+
+/* .alternating td:nth-of-type(odd) {
+    background-color: rgb(220,220,220);
+} */
+
 td {
-    background-color: rgb(196, 199, 196);
+    padding: 8px 20px;
+    text-align: center;
+    font-family: "Arial";
+    background-color: rgb(255, 255, 255);
     border: 1px solid black;
     height: 20px;
 }
@@ -115,6 +136,18 @@ td {
     justify-content: space-between;
     align-items: center;
 }
+
+.thumbnailLogo{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+.thumbnailLogo:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  }
 
 .logo-title {
     display: flex;
