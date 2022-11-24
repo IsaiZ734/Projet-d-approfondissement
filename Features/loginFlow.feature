@@ -7,7 +7,7 @@ Feature: Login page
     And the password is valid
     And Full name is provided
     And email is valid
-    When Sign up button is clicked
+    When "Sign up" button is clicked
     Then the user will receive an email for verification
     And the user will be redirected to another page suggesting him to verify his email
     When user will have verified his email
@@ -17,6 +17,6 @@ Feature: Login page
     Scenario: Login
     Given nickname is provided
     And password is provided
-    When Sign in button is clicked
+    When "Sign in" button is clicked
     Then nickname and password will be checked in our database
     And the user will be redirected to the home page if nickname and password are correct
