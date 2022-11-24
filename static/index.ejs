@@ -10,23 +10,23 @@
     <header>
       <section class="logo-title">
         <img src="Pics/Logo-federation-wallonie-bruxelles.jpg" alt="Logo Fédération Wallonie Bruxelles" width="150" height="175">
-        <h1>Louvain-La-Neuve</h1>
+        <h1 class="title">Louvain-La-Neuve</h1>
       </section>
-      <section>
+      <section class="rightPart">
         <form action="/request/search" method="POST">
-          <input
+          <input class="searchBox"
             type="text"
             name="search"
             id="search"
             placeholder="Search..."
           />
           <button class="search-btn" type="submit" hidden="true">Submit</button>
-          <a href="/login" ><%=Login%></a>
+          <a class="loginButton" href="/login" ><%=Login%></a>
         </form>
       </section>
     </header>
     <section class="add-and-date">
-        <a href="/incident">Lien pour ajouter un incident</a>
+        <a class="incidentButton" href="/incident">Lien pour ajouter un incident</a>
         <p>
             <label>Jour actuel: <%= date %></label>
         </p>
