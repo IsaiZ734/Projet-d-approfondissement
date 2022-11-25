@@ -1,13 +1,13 @@
 # Projet d'approfondissement (Louvain-la-Propre) <img src="./static/Pics/lln_logo.png" width="112" height="68"/>
 > 04/10/2022
 ## Contenu du projet
-- Dossier *"Database"* contenant 3 fichiers .js qui forment la base de données
+- Dossier *"Database"* contenant 4 fichiers .js qui forment la base de données
 - Dossier *"Features"* contenant 3 différents fichiers .feature avec les besoins de l'utilisateur
 - Dossier *"ORM"* contenant différents fichiers .drawio qui représentent les schémas de la base de données
 - Dossier *"static"* reprenant plusieurs dossiers
     * Dossier *"css"* reprenant les 3 fichiers .css qui stylisent chaque page html
     * Dossier *"Pics"* contenant 3 images pour représenter la commune à laquelle le site web est destiné (Tous les droits réservés à la Fédération Wallonie-Bruxelles)
-    * Dossier *"scripts"* contenant 2 fichiers .js qui servent au fonctionnement des pages web
+    * Dossier *"scripts"* contenant 6 fichiers .js qui servent au fonctionnement des pages web
     * 3 fichiers .ejs avec le contenu qui se montrera sur la page web (html en forme de fichier ejs)
 - Les fichiers *"express_server.js"* et *"package.json"* servent au lancement du serveur (node.js)
 - Fichier *"preparatoryproject.sqlite"* qui est la base de données en soi
