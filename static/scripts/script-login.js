@@ -9,6 +9,6 @@ if(localStorage.getItem("darkmode")==="true"){
 }
 
 function myFunction() {
-    var element1 =document.body;
+    var element1 =document.getElementById("bigBlock");
     element1.classList.toggle("dark");
 }

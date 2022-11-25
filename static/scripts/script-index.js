@@ -6,6 +6,6 @@ if(localStorage.getItem("darkmode")==="true"){
 }
 
 function myFunction() {
-    var element1 =document.getElementById("myBtn");
+    var element1 =document.getElementById("incidents-table");
     element1.classList.toggle("dark");
 }

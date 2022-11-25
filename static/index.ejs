@@ -39,13 +39,13 @@
       <a href="/20"> 20 </a>
       <a href="/all"> all </a>
     </p>
-    <div id="incidents-table"><table id="table">
-      <tr>
+    <div><table id="incidents-table">
+      <tr >
         <th>Description</th>
         <th>Adresse</th>
         <th>Rapporté par</th>
         <th>Date</th>
-        </tr>
+      </tr id="incidents-table">
           <% for(var i=0; i < data.length; i++) { %>
             <tr>
               <td><%= data[i].description %></td>
