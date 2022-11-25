@@ -10,7 +10,7 @@ const Preference = require("../../express_server").Preference;
 async function getAllIncidents() {
     try {
         const [result, meta] = await sequelize.query("SELECT * from Incidents");
-        return result;
+        return result.reverse();
     } catch {
         return [];
     }
@@ -26,10 +26,14 @@ function todaysDate() {
 
 
 async function update(username,search="") {
+    const resut=await preference.getUserPreferencesAsList(username);
+    let size=resut[1];
+    if(size===-1)
+        size=(await getAllIncidents()).length
     if(search!=""){
-        return {Login: isLoggedIn(username), date: todaysDate(), data: await filterData(search),Preferences:await preference.getUserPreferencesAsList(username)}  
+        return {Login: isLoggedIn(username), date: todaysDate(), data: await filterData(search,size),Preferences:await preference.getUserPreferencesAsList(username)}  
     }
-    return {Login: isLoggedIn(username), date: todaysDate(), data: await getAllIncidents(),Preferences:await preference.getUserPreferencesAsList(username)}
+    return {Login: isLoggedIn(username), date: todaysDate(), data: (await getAllIncidents()).slice(0,size),Preferences:await preference.getUserPreferencesAsList(username)}
 }
 
 
@@ -115,9 +119,10 @@ function checkInput(string){
 };
 
 
-async function filterData(data){
+async function filterData(data,number){
         let table =await getAllIncidents();
-        if(data=="")return table;
+        
+        if(data=="")return table.slice(0,number);
         let filtredTable=[];
     
         for(let i=0;i<table.length;i++){
@@ -125,7 +130,7 @@ async function filterData(data){
                 filtredTable.push(table[i]);
             }
         }
-        return filtredTable;
+        return filtredTable.slice(0,number);
     }
 module.exports = { // le module exporte un objet
     getAllIncidents: getAllIncidents,

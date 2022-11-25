@@ -177,6 +177,53 @@ app.post("/add",(req, res) => {
         res.redirect('/incident');
     }
 });
+//modifying user preferences
+app.post("/10",async (req, res) => {
+    if(index.isLoggedIn(req.session.username)!=="Login"){
+        let user_preference = await preference.getUserPreferencesAsList(req.session.username);
+        if(user_preference[0]===false&&user_preference[1]===-1) Preference.create({
+            user:req.session.username,
+            darkmode:false,
+            numberOfIncidents:10
+        })
+        preference.modify(req.session.username,[user_preference[0],10]);
+    }
+    res.redirect("/");
+});
+app.post("/20",async (req, res) => {
+    if(index.isLoggedIn(req.session.username)!=="Login"){
+        let user_preference = await preference.getUserPreferencesAsList(req.session.username);
+        if(user_preference[0]===false&&user_preference[1]===-1) Preference.create({
+            user:req.session.username,
+            darkmode:false,
+            numberOfIncidents:20
+        })
+        preference.modify(req.session.username,[user_preference[0],20]);
+    }
+    res.redirect("/");
+});
+app.post("/-1",async (req, res) => {
+    if(index.isLoggedIn(req.session.username)!=="Login"){
+        let user_preference = await preference.getUserPreferencesAsList(req.session.username);
+        if(user_preference[0]===false) preference.deletePreference(req.session.username)
+        preference.modify(req.session.username,[user_preference[0],-1]);
+    }
+    res.redirect("/");
+});
+app.post("/switch",async (req, res) => {
+    if(index.isLoggedIn(req.session.username)!=="Login"){
+        let user_preference = await preference.getUserPreferencesAsList(req.session.username);
+        if(!user_preference[0]===false&&user_preference[1]===-1) preference.deletePreference(req.session.username)
+        if(user_preference[0]===false&&user_preference[1]===-1) Preference.create({
+            user:req.session.username,
+            darkmode:true,
+            numberOfIncidents:-1
+        })
+        preference.modify(req.session.username,[!user_preference[0],user_preference[1]]);
+    }
+    res.redirect("/");
+});
+
 
 app.use(express.static('static'));
 https.createServer({

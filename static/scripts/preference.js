@@ -9,7 +9,7 @@ async function getUserPreferencesAsList(username){
         result.push(userPreferences.numberOfIncidents);
         return result;
     } catch {
-        return [0,-1];
+        return [false,-1];
     }
 }
 
@@ -32,9 +32,12 @@ function addTest(){
 
     })
 }
-
+async function deletePreference(username){
+    return await Preference.destroy({where:{user:username}});
+}
 module.exports = { // le module exporte un objet
         addTest:addTest,
         modify:updateUserPreferences,
-        getUserPreferencesAsList:getUserPreferencesAsList
+        getUserPreferencesAsList:getUserPreferencesAsList,
+        deletePreference:deletePreference
 };

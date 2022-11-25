@@ -23,8 +23,7 @@
           />
           <button class="search-btn" type="submit" hidden="true">Submit</button>
           <a class="loginButton" href="/login" ><%=Login%></a>
-          <p id="user_preferences"><%=Preferences%></p>
-          <button id="myBtn" onclick="myFunction()">change</button>
+          <p id="user-pref"><%=Preferences%></p>
         </form>
       </section>
     </header>
@@ -35,11 +34,12 @@
         </p>
     </section>
     <p class="filter">
-      <a href="/10"> 10 </a>
-      <a href="/20"> 20 </a>
-      <a href="/all"> all </a>
-    </p>
-    <div><table id="incidents-table">
+      <button type="button" onclick="proceed(10);">10</button> 
+      <button type="button" onclick="proceed(20);">20</button> 
+      <button type="button" onclick="proceed(-1);">all</button> 
+      <button type="button" onclick="proceed('switch');">switch</button>
+    </form>
+    <div><table>
       <tr >
         <th>Description</th>
         <th>Adresse</th>
