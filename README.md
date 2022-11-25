@@ -1,4 +1,4 @@
-# Projet d'approfondissement (Louvain-la-Propre) ![alt text](https://github.com/IsaiZ734/Projet-d-approfondissement/blob/main/static/Pics/lln_logo.png "Logo Title")
+# Projet d'approfondissement (Louvain-la-Propre) <img src="./static/Pics/lln_logo.png" width="112" height="68"/>
 > 04/10/2022
 ## Contenu du projet
 - Dossier *"Database"* contenant 3 fichiers .js qui forment la base de données
