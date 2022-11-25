@@ -5,7 +5,7 @@
     <title>Louvain-la-propre</title>
     <link rel="stylesheet" href="css/index-style.css">
     <link rel="shortcut icon" href="./Pics/lln_logo.png">
-
+  
 </head>
 <body>
     <header>
@@ -23,6 +23,8 @@
           />
           <button class="search-btn" type="submit" hidden="true">Submit</button>
           <a class="loginButton" href="/login" ><%=Login%></a>
+          <p id="user_preferences"><%=Preferences%></p>
+          <button id="myBtn" onclick="myFunction()">change</button>
         </form>
       </section>
     </header>
@@ -32,7 +34,12 @@
             <label class="dateLabel">Jour actuel: <%= date %></label>
         </p>
     </section>
-    <div id="incidents-table"><table>
+    <p class="filter">
+      <a href="/10"> 10 </a>
+      <a href="/20"> 20 </a>
+      <a href="/all"> all </a>
+    </p>
+    <div id="incidents-table"><table id="table">
       <tr>
         <th>Description</th>
         <th>Adresse</th>
@@ -49,5 +56,5 @@
           <% } %>
       </table></div>
 </body>
-
+<script src="./scripts/script-index.js"></script>
 </html>

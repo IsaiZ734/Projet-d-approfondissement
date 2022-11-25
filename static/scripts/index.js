@@ -1,8 +1,10 @@
 const e = require("express");
+const preference = require("./preference");
 
 const sequelize = require("../../express_server").sequelize;
 const User = require("../../express_server").User;
 const Incident = require("../../express_server").Incident;
+const Preference = require("../../express_server").Preference;
 //var app = require("../../express_server").app;
 
 async function getAllIncidents() {
@@ -25,9 +27,9 @@ function todaysDate() {
 
 async function update(username,search="") {
     if(search!=""){
-        return {Login: isLoggedIn(username), date: todaysDate(), data: await filterData(search)}  
+        return {Login: isLoggedIn(username), date: todaysDate(), data: await filterData(search),Preferences:await preference.getUserPreferencesAsList(username)}  
     }
-    return {Login: isLoggedIn(username), date: todaysDate(), data: await getAllIncidents()}
+    return {Login: isLoggedIn(username), date: todaysDate(), data: await getAllIncidents(),Preferences:await preference.getUserPreferencesAsList(username)}
 }
 
 

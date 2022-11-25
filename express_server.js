@@ -26,7 +26,7 @@ app.use(session({
 const sequelize = require("./Database/database")
 const User = require('./Database/Users')
 const Incident = require('./Database/Incident')
-
+const Preference = require('./Database/Preference')
 sequelize.sync().then(() => {emptyDB(),console.log("db is ready")});
 
 //exporting variables
@@ -34,15 +34,15 @@ module.exports = {
     app: app,
     sequelize: sequelize,
     User: User,
-    Incident: Incident
+    Incident: Incident,
+    Preference:Preference
 }
 
 //imports
 const index = require("./static/scripts/index")
 const login = require("./static/scripts/login");
-const e = require('express');
-const { table } = require("console");
-const { render } = require("ejs");
+const user_preference = require("./static/scripts/preference");
+const preference = require("./static/scripts/preference");
 
 async function emptyDB() {
     //console.log(await login.getAllUsers())
@@ -58,6 +58,7 @@ async function emptyDB() {
     } else {
         console.log("Incident table is not empty");
     }
+
 }
 
 //ajouter un incident manuellement via la requette /add , il faut passer un objet
@@ -116,16 +117,16 @@ app.post('/signUp', async function (req, res, next) {
         try {
             User.create({
                 user: username,
-                name: req.body.name,
+                name: index.checkInput({type:"name",value:new String(req.body.name).toLowerCase()}),
                 email: email,
                 password: crypto.createHash("md5").update(req.body.password2).digest('hex'),
                 role: "normal"
             }).then(console.log("User added"))
 
-            res.send("Account created");
+            res.redirect("/login");
 
-        } catch {
-            res.render('login.ejs', {incorrect1: "", incorrect2: "User was not created, data missing"});
+        } catch (e) {
+            res.render('login.ejs', {incorrect1: "", incorrect2: "User was not created, data missing : "+ e});
         }
     }
 })

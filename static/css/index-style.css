@@ -142,6 +142,9 @@ td {
     justify-content: space-between;
     align-items: center;
 }
+.filter{
+    float: right;
+}
 
 .thumbnailLogo{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -160,4 +163,8 @@ td {
     align-items: center;
     justify-content: space-between;
     width: 50%;
+}
+.dark{
+    background-color: #222;
+    color: #e6e6e6;
 }
