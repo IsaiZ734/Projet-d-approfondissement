@@ -9,9 +9,9 @@
     * Dossier *"Pics"* contenant 3 images pour représenter la commune à laquelle le site web est destiné (Tous les droits réservés à la Fédération Wallonie-Bruxelles)
     * Dossier *"scripts"* contenant 2 fichiers .js qui servent au fonctionnement des pages web
     * 3 fichiers .ejs avec le contenu qui se montrera sur la page web (html en forme de fichier ejs)
-- Les fichiers express_server.js et package.json servent au lancement du serveur (node.js)
-- Fichier preparatoryproject.sqlite qui est la base de données en soi
-- Les fichiers cert.pem et key.pem qui servent à la sécurité du site web
+- Les fichiers *"express_server.js"* et *"package.json"* servent au lancement du serveur (node.js)
+- Fichier *"preparatoryproject.sqlite"* qui est la base de données en soi
+- Les fichiers *"cert.pem"* et *"key.pem"* qui servent à la sécurité du site web
 * LINFO1212, groupe A07
 ***
 ## Comment utiliser?
