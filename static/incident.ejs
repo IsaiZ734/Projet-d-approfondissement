@@ -1,43 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+
+<html lang="fr">
+  <head>
     <meta charset="UTF-8">
     <title>Louvain-la-propre</title>
-    <title>Page de création d'un incident</title>
     <link rel="shortcut icon" href="./Pics/lln_logo.png">
-</head>
+    <link rel="stylesheet" href="css/incident-style.css">
+  </head>
+  <body>
+    <section>
+      <div class="upper">Page de création d'un incident</div>
+    </section>
 
-<link rel="stylesheet" href="css/incident-style.css">
 
-<body>
-<div class="upper">
-    Page de création d'un incident
-</div>
-</body>
-<div class="first_marg">
-<img src= "Pics/Logo-federation-wallonie-bruxelles.jpg" alt="Logo" style="width:125px;height:150px">
-<img src="Pics/Soutenu-par-le-BW-large.png" alt="flag" style="float:right; width:400px; height:150px">
-<div class="navbar">
-  <div class="dropdown">
-    <button class="dropbtn"><%=nom%>
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="/">Home Page</a>
-      <a ><%= user%></a>
-    </div>
-  </div>
-</div>
+    <section class="bigBlock">
+      <div target="_block">
+        
+        <div class="dropdown" style="float: right">
+          <button class="dropbtn">Options</button>
+          <div class="dropdown-content">
+            <a href="/">Home Page</a>
+            <a><%= user%></a>
+          </div>
+        </div>
 
-    <hr>
-    <h1>Signaler un nouveau incident</h1>
-    <form action="/add" method="post">
-      <p><label>Description</label></p>
-      <textarea name="description" type="text" rows="4" cols="50" required></textarea> <br>
-      <p><label>Adresse (Ex: "88 Gare de Louvain-la-Neuve Ottignis, BE-07306")</label></p>
-      <p class="incorrect-password"><%= incorrect %></p>
-      <textarea  name="address" type="text"rows="4" cols="50" required></textarea> <br>
-      <p align="right"><label >Date: <%=rememeber%></label></p>
-      <button type="submit" name="button">Ajouter l'incident</button>
-  </form>
-</div>
+        <h1>Signaler un nouveau incident</h1>
+        <form action="/add" method="post">
+          <label>Description</label>
+          <div>
+            <textarea name="description" type="text" rows="4" cols="50" required></textarea>
+          </div>
+          <label>Adresse (Ex: "88 Gare de Louvain-la-Neuve Ottignis, BE-07306")</label>
+          <div>
+            <p class="incorrect-address"><%= incorrect %></p>
+            <textarea  name="address" type="text"rows="4" cols="50" required></textarea>
+          </div>
+          <div>
+            <p id="date"><label>Date: <%=rememeber%></label></p>
+            <button id="submit" type="submit" name="button">Ajouter l'incident</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

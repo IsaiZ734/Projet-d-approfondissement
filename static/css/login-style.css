@@ -1,4 +1,8 @@
 body {
+    background-size: 100%;
+    background-image: url("../Pics/lln.jpeg");
+    background-color: rgba(150, 150, 150, 0.8);
+    background-blend-mode: lighten;
     margin: 0;
     padding: 0;
 }
@@ -8,13 +12,14 @@ input#email-input:invalid {
 }
 
 .top {
-    background-color: black;
+    box-shadow: 10px 10px 50px #286b56;
+    background-image: linear-gradient(to bottom right, #00c3af 35%, #0a885c);
     color: white;
     text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
     font-size: 3.5em;
-    font-family: 'Times New Roman', serif;
+    font-family: 'Constantia';
 }
 
 .incorrect-passsword {
@@ -27,6 +32,9 @@ input#email-input:invalid {
 }
 
 .bigBlock {
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255, 0.8);
+    background-position: left top;
     font-family: Verdana, sans-serif;
     margin-top: 12px;
     margin-left: 300px;
@@ -34,31 +42,15 @@ input#email-input:invalid {
 }
 
 .bigBlock div {
-    border: 3px solid black;
+    border-radius: 8px;
+    border: 3px solid rgb(47, 47, 47);
     margin: 0;
     padding-left: 10px;
-    border-top: 2px solid black;
-}
-
-.bigBlock [id="headingDiv"] {
-    overflow: auto;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    padding-left: 0;
-    border: 3px solid black;
-    border-bottom: 1px solid black;
 }
 
 .bigBlock form div {
     border: none;
     margin-bottom: 15px;
-}
-
-.bigBlock div img {
-    float: left;
-    width: 150px;
-    height: 175px;
 }
 
 .bigBlock div form div label {
@@ -67,14 +59,15 @@ input#email-input:invalid {
     font-family: Verdana, sans-serif;
 }
 
-.bigBlock div form button {
+button {
     margin-left: 10px;
     margin-bottom: 10px;
     font-size: 1em;
-}
-
-.bigBlock div [value="Champs de recherche"] {
-    margin-left: -150px;
-    border: 3px solid black;
-    font-size: 2em;
+    background-color: #00c3af;
+    border-radius: 6px;
+    color: white;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    padding: 5px 12px;
+    cursor: pointer;
 }

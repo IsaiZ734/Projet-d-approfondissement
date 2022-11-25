@@ -1,6 +1,5 @@
 body{
     background-size: 100%;
-    background-repeat: no-repeat;
     background-image: url("../Pics/lln.jpeg");
     background-color: rgba(150, 150, 150, 0.8);
     background-blend-mode: lighten;
@@ -22,6 +21,13 @@ body{
     border: 2px solid #009c8c;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
+}
+
+.dateLabel{
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
 }
 
 .incidentButton {
@@ -67,7 +73,7 @@ body{
 .title{
     font-size: 70px;
     font-weight: 600;
-    font-family: Constantia;
+    font-family: 'Constantia';
     color: #00c3af;
     text-decoration: underline;
     text-shadow: 0px 0px 5px #0f5a5373, 0px 0px 10px #0f5a5373, 0px 0px 10px #0f5a5373,
