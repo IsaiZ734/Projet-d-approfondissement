@@ -98,6 +98,7 @@ app.post('/ident', async function (req, res, next) {
 });
 
 app.get('/login', function (req, res, next) {
+    req.session.username="";
     if (req.query.incorrect) {
         res.render('login.ejs', {incorrect1: "The username or the password you entered was incorrect", incorrect2: ""});
     } else {
@@ -177,6 +178,8 @@ app.post("/add",(req, res) => {
         res.redirect('/incident');
     }
 });
+
+
 //modifying user preferences
 app.post("/10",async (req, res) => {
     if(index.isLoggedIn(req.session.username)!=="Login"){

@@ -4,6 +4,7 @@
   "description": "Louvain Propre",
   "scripts": {
     "start": "nodemon express_server"
+  
   },
   "author": "Eduart Abdullahu, Isaias Antunez Garcia, Adham Elzawawi",
   "license": "ISC",

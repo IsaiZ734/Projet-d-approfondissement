@@ -22,7 +22,7 @@
             placeholder="Search..."
           />
           <button class="search-btn" type="submit" hidden="true">Submit</button>
-          <a class="loginButton" href="/login" ><%=Login%></a>
+          <a id="btn-login"class="loginButton" href="/login" ><%=Login%></a>
           <p id="user-pref"><%=Preferences%></p>
         </form>
       </section>
@@ -37,7 +37,7 @@
       <button type="button" onclick="proceed(10);">10</button> 
       <button type="button" onclick="proceed(20);">20</button> 
       <button type="button" onclick="proceed(-1);">all</button> 
-      <button type="button" onclick="proceed('switch');">switch</button>
+      <button type="button" onclick="chose('switch')">switch</button>
     </form>
     <div><table id="myTable">
       <tr >

@@ -1,11 +1,16 @@
 const element = document.getElementById("user-pref").innerText;
-localStorage.setItem("darkmode",element.split(",")[0]);
+if(document.getElementById("btn-login").innerHTML==="Login"){
+    localStorage.setItem("darkmode",localStorage.getItem("darkmode"));
+}else{
+    localStorage.setItem("darkmode",element.split(",")[0]);
+}
 localStorage.setItem("number",element.split(",")[1]);
 if(localStorage.getItem("darkmode")==="true"){
     myFunction();
 }
 
 function myFunction() {
+
     let tableElements = document.getElementById("myTable");
     for(let j = 1; j < tableElements.rows.length; j++)
     {
@@ -23,4 +28,12 @@ function proceed (string) {
     form.style.display = 'hidden';
     document.body.appendChild(form)
     form.submit();
+}
+function chose(string){
+    if(document.getElementById("btn-login").innerHTML==="Login"){
+        localStorage.setItem("darkmode",!localStorage.getItem("darkmode"))
+        myFunction();
+    }else{
+        proceed (string);
+    }
 }
