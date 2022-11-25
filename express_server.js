@@ -136,7 +136,7 @@ app.get('/incident', function (req, res, next) {
         try{
             res.render('incident.ejs', {user:req.session.username,incorrect:req.session.message.alert,{rememeber: (new Date()).toLocaleDateString('de-DE'), nom:req.session.username}});
         }catch{
-            res.render('incident.ejs', {user:req.session.username,incorrect:"",rememeber: (new Date()).toLocaleDateString('de-DE')});
+            res.render('incident.ejs', {user:req.session.username,incorrect:"",{rememeber: (new Date()).toLocaleDateString('de-DE'),nom:""}});
         }
     } else {
         res.redirect('/login');
