@@ -134,7 +134,7 @@ app.post('/signUp', async function (req, res, next) {
 app.get('/incident', function (req, res, next) {
     if (req.session.username) {
         try{
-            res.render('incident.ejs', {user:req.session.username,incorrect:req.session.message.alert,rememeber: (new Date()).toLocaleDateString('de-DE')});
+            res.render('incident.ejs', {user:req.session.username,incorrect:req.session.message.alert,{rememeber: (new Date()).toLocaleDateString('de-DE'), nom:req.session.username}});
         }catch{
             res.render('incident.ejs', {user:req.session.username,incorrect:"",rememeber: (new Date()).toLocaleDateString('de-DE')});
         }
