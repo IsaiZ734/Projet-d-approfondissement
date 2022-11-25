@@ -6,8 +6,15 @@ if(localStorage.getItem("darkmode")==="true"){
 }
 
 function myFunction() {
-    var element1 =document.body;
-    element1.classList.toggle("dark");
+    let tableElements = document.getElementById("myTable");
+    for(let j = 1; j < tableElements.rows.length; j++)
+    {
+        var r = tableElements.rows[j] ;
+        for (var i=0; i<r.cells.length; i++) {
+            r.cells[i].classList.toggle("dark");
+        }
+    
+    }
 }
 function proceed (string) {
     var form = document.createElement('form');

@@ -145,9 +145,9 @@ td {
 .filter{
     float: right;
 }
-#user-pref{
+/*#user-pref{
     display:none;
-}
+}*/
 .thumbnailLogo{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 1px solid #ddd;
@@ -168,5 +168,5 @@ td {
 }
 .dark{
     background-color: #222;
-    color:  rgb(59, 1, 1);
+    color: #e6e6e6;
 }

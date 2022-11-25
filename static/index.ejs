@@ -39,19 +39,19 @@
       <button type="button" onclick="proceed(-1);">all</button> 
       <button type="button" onclick="proceed('switch');">switch</button>
     </form>
-    <div><table>
+    <div><table id="myTable">
       <tr >
         <th>Description</th>
         <th>Adresse</th>
         <th>Rapporté par</th>
         <th>Date</th>
-      </tr id="incidents-table">
+      </tr>
           <% for(var i=0; i < data.length; i++) { %>
             <tr>
-              <td><%= data[i].description %></td>
-              <td><%= data[i].address %></td>
-              <td><%= data[i].user %></td>
-              <td><%= data[i].date %></td>
+              <td ><%= data[i].description %></td>
+              <td ><%= data[i].address %></td>
+              <td ><%= data[i].user %></td>
+              <td ><%= data[i].date %></td>
             </tr>
           <% } %>
       </table></div>
